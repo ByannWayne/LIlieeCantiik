@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy New Year ✨</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Comic Neue', cursive;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      text-align: center;
+      padding: 40px 16px;
+      margin: 0;
+      min-height: 100vh;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    .hidden { display: none; }
+
+    /* Sparkle jatuh */
+    .sparkle {
+      position: fixed;
+      top: -10px;
+      font-size: 18px;
+      animation: fall linear infinite;
+      opacity: 0.9;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes fall {
+      from { transform: translateY(-10px) rotate(0deg); }
+      to { transform: translateY(110vh) rotate(360deg); }
+    }
+
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 10px;
+      border: none;
+      font-family: 'Comic Neue', cursive;
+    }
+
+    /* Envelope */
+    .envelope {
+      background: rgba(255,255,255,0.15);
+      border: 2px solid gold;
+      border-radius: 14px;
+      padding: 32px;
+      max-width: 420px;
+      margin: 28px auto;
+      cursor: pointer;
+      transition: 0.5s;
+    }
+
+    .envelope:hover { transform: scale(1.05); }
+
+    .open-text {
+      color: gold;
+      margin-top: 10px;
+    }
+
+    /* Surat */
+    .letter {
+      border: 2px dashed gold;
+      background: rgba(255,255,255,0.96);
+      color: #333;
+      padding: 24px;
+      border-radius: 14px;
+      max-width: 560px;
+      margin: 20px auto;
+      transform: scaleY(0);
+      transform-origin: top;
+      transition: transform 1s ease;
+      overflow: hidden;
+    }
+
+    .letter.open { transform: scaleY(1); }
+
+    .letter p, .letter button, .video-box {
+      opacity: 0;
+      transform: translateY(12px);
+      animation: fadeUp 0.8s forwards;
+    }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .cute {
+      animation: glow 1.5s infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 5px gold; }
+      to { text-shadow: 0 0 14px gold; }
+    }
+
+    .ig-button {
+      background: gold;
+      color: #333;
+      padding: 12px 24px;
+      font-size: 17px;
+      border-radius: 12px;
+      cursor: pointer;
+      margin-top: 18px;
+    }
+
+    /* VIDEO */
+    .video-box {
+      margin-top: 20px;
+      display: none;
+      position: relative;
+    }
+
+    .video-box video {
+      width: 100%;
+      max-width: 480px;
+      border-radius: 14px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+    }
+
+    /* CONFETTI */
+    .confetti {
+      position: fixed;
+      bottom: -10px;
+      width: 10px;
+      height: 14px;
+      opacity: 0.9;
+      animation: shoot 1.8s ease-out forwards;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    @keyframes shoot {
+      from {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-120vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .letter { padding: 18px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- CEK NAMA -->
+<div id="nameCheck">
+  <h2>👑 Halo Cantiik ✨</h2>
+  <p>Tulis nama kamu dulu ya 🤍</p>
+  <input id="nameInput" placeholder="Nama kamu..." />
+  <br><br>
+  <button onclick="checkName()">Masuk</button>
+  <p id="warning" style="color:#ffb3b3;"></p>
+</div>
+
+<!-- SURAT -->
+<div id="letterPage" class="hidden">
+  <h2 class="cute">🎇 Happy New Year 🎇</h2>
+
+  <div id="envelope" class="envelope" onclick="openLetter()">
+    💌
+    <div class="open-text">Klik untuk membuka surat</div>
+  </div>
+
+  <div id="letter" class="letter hidden">
+    <p style="animation-delay:.3s">
+Hai Princess Lilieee yang palingg cantiiikkk 🤍
+</p>
+
+<p style="animation-delay:.6s">
+Aku mau ngucapin selamat tahun baru yaaaa.
+</p>
+
+<p style="animation-delay:.9s">
+Aku mau berterimakasihh banget sama kamuu.
+Terima kasih udah berjuang sejauh ini.
+Terima kasih karena tidak menyerah,
+meskipun ada hari-hari yang terasa sangat berat dan capeekk untuk dilewati.
+Terima kasih udah baikk sama aku,
+yang selalu support akuu,
+mau nyobain masakan akuu,
+mau kemana mana bareng akuu.
+Kamuu bener bener cahaya yang datang dari kegelapan
+Dan aku bener bener bersyukurr dan beruntung karena ketemu kamu.
+i swear to god, you are the best gift i've ever had.
+Terimakasihh udahh memberikan warnaa di hidup akuu.
+</p>
+
+<p style="animation-delay:1.2s">
+Aku tahu perjalanan di tahun ini ga mudahh.
+Mulai dari kamu yang sedih sedih terus di awal karena gamon.
+Sampai di titik sekarang yang bahkann kamu udah improve bangett, entah itu dari segi pencapaian maupun kepribadian kamu.
+Aku banggaaa banget sama kamuuu,
+kamu anak cantiiikk, anak kuatt, anak pinterrrr.
+Ada banyak hal yang mungkin kamu pendam sendiri,
+Tapi terkadang,
+banyak pikiran yang teruss berputar di kepala kamu,
+dan banyak momen di mana kamu merasa ragu pada dirimu sendiri.
+</p>
+
+<p style="animation-delay:1.5s">
+Tapi kamu tetap berjalan.
+Dengan langkah yang mungkin pelan,
+dengan tenaga yang mungkin hampir habis,
+namun kamu tidak berhenti.
+Dan itu adalah sesuatu yang sangat layak dihargai.
+</p>
+
+<p style="animation-delay:1.8s">
+Aku punyaa pesan sama kamuu lilieee,
+aku harap kamu bisa sedikit lebih lembut pada dirimu sendiri.
+Kamu tidak harus sempurna,
+kamu hanya perlu jujur pada perasaanmu.
+</p>
+
+<p style="animation-delay:2.1s">
+Apa pun yang akan kamu hadapi ke depannya,
+ingat satu hal —
+<b>kamu tidak sendirian.</b>
+Banyak yang sayang sama kamuuu, dan aku salah satunya.
+</p>
+
+<p style="animation-delay:2.4s">
+Aku yakinn, bahwa aku gapernah salah untuk mengagumi orang.
+Setiap kata kataa yang keluar dari mulut kamu,
+tindakan kecil yang kamu buatt,
+semuaaa bagian yang ada di tubuh kamuu,
+aku rasaaa semuaa terasa sangat indah dan sempurnaa.
+Aku sayang sama kamuu liliee, 
+dan ga bisa di tutupii, aku juga cinta sama kamu
+Kamu gaperlu takuttt.
+Aku bakal selalu ada buat kamu.
+Aku bakal bantuu dan berusaha yang terbaik utnuk kamuuu
+Dan aku percaya,
+kamu mampu melewati apa pun yang menantimu nanti.
+</p>
+
+<p style="animation-delay:2.7s">
+Dont be scared princess liliee, im always here for youu.
+And my feelings never change.
+I will take care of youuu, and i hope life treat you kindlyy.
+Aku minta maaf atas semua kesalahan yang sudah aku perbuat ke kamuuu, aku ga sempurnaa dan aku bakal perbaiki ituu
+Like conrad said,
+If i met you at the first time tonight, i would love you,
+I will always care about you,
+and i will always love you 🤍
+</p>
+
+    <button class="ig-button" style="animation-delay:1.8s" onclick="showVideo()">
+      🎁 Klik kecil ini
+    </button>
+
+    <!-- VIDEO -->
+    <div id="videoBox" class="video-box">
+      <video id="myVideo" controls loop playsinline>
+        <source src="video_liliee.mp4" type="video/mp4">
+        Browser kamu tidak mendukung video.
+      </video>
+    </div>
+  </div>
+</div>
+
+<script>
+  const allowedNames = ["liany","lia","lilie"];
+
+  const nameCheck  = document.getElementById("nameCheck");
+  const letterPage = document.getElementById("letterPage");
+  const envelope   = document.getElementById("envelope");
+  const letter     = document.getElementById("letter");
+  const nameInput  = document.getElementById("nameInput");
+  const warning    = document.getElementById("warning");
+  const videoBox   = document.getElementById("videoBox");
+  const myVideo    = document.getElementById("myVideo");
+
+  function checkName() {
+    const name = nameInput.value.trim().toLowerCase();
+    if (allowedNames.includes(name)) {
+      nameCheck.classList.add("hidden");
+      letterPage.classList.remove("hidden");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      warning.innerText = "Kayaknya bukan orang yang aku tuju ✨";
+    }
+  }
+
+  function openLetter() {
+    envelope.style.display = "none";
+    letter.classList.remove("hidden");
+    setTimeout(() => letter.classList.add("open"), 100);
+  }
+
+  function showVideo() {
+    videoBox.style.display = "block";
+    myVideo.play();
+    launchConfetti();
+    window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+  }
+
+  function launchConfetti() {
+    for (let i = 0; i < 80; i++) {
+      const c = document.createElement("div");
+      c.className = "confetti";
+      c.style.left = Math.random() * 100 + "vw";
+      c.style.background = ["gold","#ff69b4","#ffffff","#ffd700","#ffb347"][Math.floor(Math.random()*5)];
+      c.style.animationDuration = (1.5 + Math.random()) + "s";
+      document.body.appendChild(c);
+      setTimeout(() => c.remove(), 2000);
+    }
+  }
+
+  function sparkle() {
+    const s = document.createElement("div");
+    s.className = "sparkle";
+    s.innerText = ["✨","🎆","⭐","💫"][Math.floor(Math.random()*4)];
+    s.style.left = Math.random()*100 + "vw";
+    s.style.animationDuration = (3 + Math.random()*5) + "s";
+    document.body.appendChild(s);
+    setTimeout(()=>s.remove(),8000);
+  }
+
+  setInterval(sparkle, 400);
+</script>
+
+</body>
+</html>
